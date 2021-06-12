@@ -1,0 +1,36 @@
+{
+  "name": "fuss",
+  "version": "1.0.0",
+  "description": "A backend service playing with graphQL",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server-express": "^2.19.2",
+    "app-root-path": "^3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "graphql": "^15.5.0",
+    "graphql-redis-subscriptions": "^2.3.1",
+    "helmet": "^3.22.0",
+    "morgan": "^1.10.0",
+    "redis": "^3.1.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "graphql-tools": "^7.0.4"
+  },
+  "scripts": {
+    "dev": "nodemon -r esm .",
+    "lint": "eslint --ext .js ./"
+  },
+  "keywords": [
+    "graphql"
+  ],
+  "author": "addempsea",
+  "license": "ISC"
+}
