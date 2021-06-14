@@ -12,3 +12,4 @@ tmp
 coverage
 logs
 data
+yarn-error.*

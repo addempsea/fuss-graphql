@@ -9,7 +9,7 @@ const root = gql`
   }
   type Subscription {
     root: String
-} 
+  }
 `;
 
 export default root;

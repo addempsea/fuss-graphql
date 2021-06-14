@@ -9,6 +9,7 @@ const User = gql`
     firstName: String
     lastName: String
     isActive: Boolean
+    note(limit: Int): [Note]
   }
 
   # RESPONSE TYPES

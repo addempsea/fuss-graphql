@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { user } from '../../model';
+import DataLoader from 'dataloader';
+import { user, note } from '../../model';
 import { helpers, constants, ApiError } from '../../utils';
 
 const {
@@ -10,6 +11,7 @@ const {
   httpStatusCodes: { OK, INTERNAL_SERVER_ERROR }
 } = constants;
 const data = user();
+const notes = note();
 
 const userResolvers = {
   Query: {
@@ -61,6 +63,18 @@ const userResolvers = {
           'Error while trying to fetch user. It is not you, it is us'
         );
       }
+    }
+  },
+  User: {
+    note: (parent, { limit }) => {
+      const noteLoader = new DataLoader((keys) => {
+        const result = limit
+          ? keys.map((val) => notes.filter((el) => el.userId === val).slice(0, limit))
+          : keys.map((val) => notes.filter((el) => el.userId === val));
+        return Promise.resolve(result);
+      });
+
+      return noteLoader.load(parent.id);
     }
   }
 };

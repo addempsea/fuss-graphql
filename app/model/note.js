@@ -7,7 +7,7 @@ export const note = () => {
   for (let i = 1; i < 100; i++) {
     notes.push({
       id: `${i}`,
-      content: faker.random.words(),
+      content: faker.lorem.paragraph(),
       userId: `${faker.helpers.randomize(Array.from(Array(100).keys()))}`,
       isPublic: faker.datatype.boolean()
     });
