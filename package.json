@@ -6,6 +6,7 @@
   "dependencies": {
     "apollo-server-express": "^2.19.2",
     "app-root-path": "^3.0.0",
+    "bluebird": "^3.7.2",
     "cors": "^2.8.5",
     "dataloader": "^2.0.0",
     "dotenv": "^8.2.0",
@@ -16,6 +17,7 @@
     "graphql-redis-subscriptions": "^2.3.1",
     "helmet": "^3.22.0",
     "morgan": "^1.10.0",
+    "pg-promise": "^10.10.2",
     "redis": "^3.1.2",
     "winston": "^3.3.3"
   },

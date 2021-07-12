@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import DataLoader from 'dataloader';
-import { user, note } from '../../model';
+import queries from '../../db/queries';
+import db from '../../db/setup';
+import { notesByUserIds } from '../../services/notes';
 import { helpers, constants, ApiError } from '../../utils';
 
 const {
@@ -10,13 +11,12 @@ const {
 const {
   httpStatusCodes: { OK, INTERNAL_SERVER_ERROR }
 } = constants;
-const data = user();
-const notes = note();
 
 const userResolvers = {
   Query: {
-    getAllUsers(_, __, ctx) {
+    async getAllUsers(_, __, ctx) {
       try {
+        const data = await db.many(queries.getAllUsers);
         return graphQLResponse(OK, 'Fetched users successfully', data);
       } catch (err) {
         const error = new ApiError({
@@ -32,7 +32,7 @@ const userResolvers = {
     },
     getUserById(_, args, ctx, info) {
       try {
-        const singleUser = data.find((el) => el.id === args.id);
+        const singleUser = db.oneOrNone(queries.getSingleUser, args.id);
         return graphQLResponse(OK, 'Fetched users successfully', singleUser);
       } catch (err) {
         const error = new ApiError({
@@ -46,11 +46,12 @@ const userResolvers = {
         );
       }
     }
+
+    // TODO: Add more resolver
   },
   Mutation: {
     addNewUser(_, args, ctx, info) {
       try {
-        data.push({ ...args.data });
         return graphQLResponse(OK, ' user added ', { ...args.data });
       } catch (err) {
         const error = new ApiError({
@@ -66,16 +67,7 @@ const userResolvers = {
     }
   },
   User: {
-    note: (parent, { limit }) => {
-      const noteLoader = new DataLoader((keys) => {
-        const result = limit
-          ? keys.map((val) => notes.filter((el) => el.userId === val).slice(0, limit))
-          : keys.map((val) => notes.filter((el) => el.userId === val));
-        return Promise.resolve(result);
-      });
-
-      return noteLoader.load(parent.id);
-    }
+    note: ({ id }, { limit }, { loaders }) => loaders.notesLoader.load(id)
   }
 };
 

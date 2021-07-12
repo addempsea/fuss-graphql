@@ -5,7 +5,7 @@ const User = gql`
 
   type User {
     id: ID!
-    userName: String
+    username: String
     firstName: String
     lastName: String
     isActive: Boolean
@@ -33,7 +33,7 @@ const User = gql`
     firstName: String
     lastName: String
     isActive: Boolean
-    userName: String
+    username: String
   }
 
   # Query

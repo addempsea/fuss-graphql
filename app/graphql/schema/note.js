@@ -4,7 +4,7 @@ const Note = gql`
   type Note {
     id: ID
     content: String
-    isPublic: Boolean
+    isPublished: Boolean
     userId: String
   }
 `;
