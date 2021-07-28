@@ -19,6 +19,6 @@ export default {
   getAllUsers: `
     SELECT id, username, last_name, first_name, is_active FROM users
   `,
-  getUserNotes: 'SELECT * FROM notes WHERE user_id = ANY($1)',
+  getUserNotes: 'SELECT * FROM notes WHERE user_id IN ($1:csv)',
   getSingleUser: 'SELECT id, username, last_name, first_name, is_active FROM users where id = $1'
 };
