@@ -17,7 +17,7 @@ export default {
     ) VALUES ($1, $2, $3, $4)
   `,
   getAllUsers: `
-    SELECT id, username, last_name, first_name, is_active FROM users
+    SELECT * FROM users
   `,
   getUserNotes: 'SELECT * FROM notes WHERE user_id IN ($1:csv)',
   getSingleUser: 'SELECT * FROM users where id = $1'
