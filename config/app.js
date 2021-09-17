@@ -25,10 +25,6 @@ const appConfig = async (app, server) => {
     next(notFoundApi);
   });
   app.use((err, req, res, next) => errorResponse(req, res, err));
-
-  app.listen({ port }, () => {
-    logger.info(`🚀🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
-  });
 };
 
 export default appConfig;
