@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "eslint": "7.28.0",
-    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.24.2",
     "graphql-tools": "7.0.5"
   },
