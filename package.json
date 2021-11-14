@@ -4,7 +4,7 @@
   "description": "A backend service playing with graphQL",
   "main": "index.js",
   "dependencies": {
-    "apollo-server-express": "^2.19.2",
+    "apollo-server-express": "^3.0.0",
     "app-root-path": "^3.0.0",
     "bluebird": "^3.7.2",
     "cors": "^2.8.5",
